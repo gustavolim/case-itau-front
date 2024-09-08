@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Fundo } from './fundo.model';
+import { FundoRequest } from './fundo-request.modrl';
 
 @Injectable({
   providedIn: 'root'
@@ -34,18 +35,18 @@ export class FundoService {
     return this.http.get<Fundo>(`${this.apiUrl}/${codigo}`, { headers });
   }
 
-  addFundo(fundo: Fundo): Observable<Fundo> {
+  addFundo(fundo: FundoRequest): Observable<FundoRequest> {
     const headers = this.getAuthHeaders();
-    return this.http.post<Fundo>(this.apiUrl, fundo, { headers });
+    return this.http.post<FundoRequest>(this.apiUrl, fundo, { headers });
   }
 
-  updateFundo(fundo: Fundo): Observable<Fundo> {
+  updateFundo(fundo: FundoRequest): Observable<FundoRequest> {
     const headers = this.getAuthHeaders();
-    return this.http.put<Fundo>(`${this.apiUrl}/${fundo.codigo}`, fundo, { headers });
+    return this.http.put<FundoRequest>(`${this.apiUrl}`, fundo, { headers });
   }
 
   deleteFundo(codigo: string): Observable<void> {
     const headers = this.getAuthHeaders();
-    return this.http.delete<void>(`${this.apiUrl}/${codigo}`, { headers });
+    return this.http.delete<void>(`${this.apiUrl}?codigo=${codigo}`, { headers });
   }
 }

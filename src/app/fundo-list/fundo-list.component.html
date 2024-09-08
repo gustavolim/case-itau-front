@@ -1,31 +1,50 @@
-<table mat-table [dataSource]="fundos" class="mat-elevation-z8">
-
-  <!-- Código da tabela -->
-  <ng-container matColumnDef="codigo">
-    <th mat-header-cell *matHeaderCellDef> Código </th>
-    <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+<div class="container mx-auto mt-4">
+  <ng-container *ngIf="showExtraContent">
+    <div id="extra-content">
+      <h1>Conteúdo Extra</h1>
+      <p>Este conteúdo será exibido acima do componente FundoList.</p>
+    </div>
   </ng-container>
+  <table mat-table [dataSource]="fundos" class="mat-elevation-z8 rounded-lg overflow-hidden border border-gray-200">
 
-  <ng-container matColumnDef="nome">
-    <th mat-header-cell *matHeaderCellDef> Nome </th>
-    <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
-  </ng-container>
+    <!-- Código da tabela -->
+    <ng-container matColumnDef="codigo">
+      <th mat-header-cell *matHeaderCellDef class="p-4 border-b border-gray-200"> Código </th>
+      <td mat-cell *matCellDef="let element" class="p-4 border-b border-gray-200"> {{element.codigo}} </td>
+    </ng-container>
 
-  <ng-container matColumnDef="cnpj">
-    <th mat-header-cell *matHeaderCellDef> CNPJ </th>
-    <td mat-cell *matCellDef="let element"> {{element.cnpj}} </td>
-  </ng-container>
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef class="p-4 border-b border-gray-200"> Nome </th>
+      <td mat-cell *matCellDef="let element" class="p-4 border-b border-gray-200"> {{element.nome}} </td>
+    </ng-container>
 
-  <ng-container matColumnDef="patrimonio">
-    <th mat-header-cell *matHeaderCellDef> Patrimônio </th>
-    <td mat-cell *matCellDef="let element"> {{element.patrimonio}} </td>
-  </ng-container>
+    <ng-container matColumnDef="cnpj">
+      <th mat-header-cell *matHeaderCellDef class="p-4 border-b border-gray-200"> CNPJ </th>
+      <td mat-cell *matCellDef="let element" class="p-4 border-b border-gray-200"> {{element.cnpj}} </td>
+    </ng-container>
 
-  <ng-container matColumnDef="codigoTipo">
-    <th mat-header-cell *matHeaderCellDef> Código Tipo </th>
-    <td mat-cell *matCellDef="let element"> {{element.codigoTipo}} </td>
-  </ng-container>
+    <ng-container matColumnDef="patrimonio">
+      <th mat-header-cell *matHeaderCellDef class="p-4 border-b border-gray-200"> Patrimônio </th>
+      <td mat-cell *matCellDef="let element" class="p-4 border-b border-gray-200"> {{element.patrimonio}} </td>
+    </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+    <ng-container matColumnDef="codigoTipo">
+      <th mat-header-cell *matHeaderCellDef class="p-4 border-b border-gray-200"> Código Tipo </th>
+      <td mat-cell *matCellDef="let element" class="p-4 border-b border-gray-200"> {{element.codigoTipo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef class="p-4 border-b border-gray-200 text-center"> Ações </th>
+      <td mat-cell *matCellDef="let fundo" class="p-4 border-b border-gray-200 text-center">
+        <button mat-stroked-button class="mr-2" (click)="editFundo(fundo)">Editar</button>
+        <button mat-stroked-button (click)="deleteFundo(fundo.codigo)">Excluir</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="bg-gray-100"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="hover:bg-gray-50"></tr>
+  </table>
+  <div class="example-button-row mt-4 flex justify-end">
+    <button class="mr-4" mat-flat-button (click)="adicionarFundo()">Adicionar</button>
+  </div>
+</div>

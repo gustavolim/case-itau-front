@@ -1,0 +1,65 @@
+<div class="flex justify-center items-center h-screen">
+  <form (ngSubmit)="saveFundo()" [formGroup]="fundoForm" class="fundo-form">
+    <mat-card class="w-full p-4">
+      <mat-card-header class="mb-4">
+        <mat-card-title>Inserir Novo Fundo</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="form-group">
+          <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Código</mat-label>
+            <input matInput formControlName="codigo" required>
+            <mat-error *ngIf="fundoForm.get('codigo')?.hasError('required')">
+              Código é obrigatório.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="nome" required>
+            <mat-error *ngIf="fundoForm.get('nome')?.hasError('required')">
+              Nome é obrigatório.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field appearance="fill" class="w-full">
+            <mat-label>CNPJ</mat-label>
+            <input matInput formControlName="cnpj" required>
+            <mat-error *ngIf="fundoForm.get('cnpj')?.hasError('required')">
+              CNPJ é obrigatório.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Patrimônio</mat-label>
+            <input matInput formControlName="patrimonio" type="number" required>
+            <mat-error *ngIf="fundoForm.get('patrimonio')?.hasError('required')">
+              Patrimônio é obrigatório.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Código Tipo</mat-label>
+            <input matInput formControlName="codigoTipo" type="number" required>
+            <mat-error *ngIf="fundoForm.get('codigoTipo')?.hasError('required')">
+              Código Tipo é obrigatório.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+      </mat-card-content>
+      <mat-card-actions class="flex justify-end">
+        <button mat-stroked-button class="mr-4" type="button" (click)="cancel()">Cancelar</button>
+        <button mat-flat-button type="submit">Salvar</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

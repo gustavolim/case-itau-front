@@ -1,0 +1,23 @@
+.fundo-form {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.mat-card {
+  padding: 20px;
+}
+
+.mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.mat-error {
+  font-size: 12px;
+}
